@@ -3,18 +3,18 @@ import {pureOnEnter} from '../GreetingContainer'
 
 let added: any
 const addUser = () => {
-    added = true
+  added = true
 }
 
 beforeEach(() => {
-    added = false
+  added = false
 })
 
 test('name 1', () => {
-    pureOnEnter({key: 'Enter'} as any, addUser)
-    expect(added).toBe(true)
+  pureOnEnter({key: 'Enter'} as any, addUser)
+  expect(added).toBe(true)
 })
 test('name 2', () => {
-    pureOnEnter({key: ''} as any, addUser)
-    expect(added).toBe(false)
+  pureOnEnter({key: ''} as any, addUser)
+  expect(added).toBe(false)
 })
