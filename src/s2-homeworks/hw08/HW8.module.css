@@ -18,7 +18,7 @@
 .buttonsContainer {
   display: flex;
   gap: 12px;
- justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 .container {
