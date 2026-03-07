@@ -27,7 +27,7 @@
 .default {
   background-color: #06c;
   border: none;
-
+  width: fit-content;
 }
 
 .red {
