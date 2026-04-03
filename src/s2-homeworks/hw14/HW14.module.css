@@ -1,7 +1,13 @@
 .tech {
-
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 .loading {
-
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 300;
+  color: #4D4D4D;
+  text-align: center;
 }
