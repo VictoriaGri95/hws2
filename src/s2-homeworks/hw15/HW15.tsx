@@ -5,6 +5,7 @@ import axios from 'axios'
 import SuperPagination from './common/c9-SuperPagination/SuperPagination'
 import {useSearchParams} from 'react-router-dom'
 import SuperSort from './common/c10-SuperSort/SuperSort'
+import {CircularProgress} from "@mui/material";
 
 /*
 * 1 - дописать SuperPagination
@@ -52,9 +53,13 @@ const HW15 = () => {
     getTechs(params)
       .then((res) => {
         // делает студент
-
         // сохранить пришедшие данные
-
+        setLoading(true)
+        if (res) {
+          setTechs(res.data.techs)
+          setTotalCount(res.data.totalCount)
+        }
+        setLoading(false)
         //
       })
   }
@@ -62,11 +67,20 @@ const HW15 = () => {
   const onChangePagination = (newPage: number, newCount: number) => {
     // делает студент
 
-    // setPage(
-    // setCount(
+    setPage(newPage)
+    setCount(newCount)
 
-    // sendQuery(
-    // setSearchParams(
+    const params: ParamsType = {
+      sort,
+      page: newPage,
+      count: newCount
+    }
+    sendQuery(params)
+    setSearchParams({
+      page: String(newPage),
+      count: String(newCount),
+      ...(sort && {sort: sort})
+    })
 
     //
   }
@@ -74,11 +88,19 @@ const HW15 = () => {
   const onChangeSort = (newSort: string) => {
     // делает студент
 
-    // setSort(
-    // setPage(1) // при сортировке сбрасывать на 1 страницу
-
-    // sendQuery(
-    // setSearchParams(
+    setSort(newSort)
+    setPage(1) // при сортировке сбрасывать на 1 страницу
+    const params: ParamsType = {
+      sort: newSort,
+      page: 1,
+      count,
+    }
+    sendQuery(params)
+    setSearchParams({
+      page: '1',
+      count: String(count),
+      ...(newSort && {sort: newSort})
+    })
 
     //
   }
@@ -119,7 +141,7 @@ const HW15 = () => {
         {idLoading && <div
           id={'hw15-loading'}
           className={s.loading}
-        >Loading...</div>}
+        ><CircularProgress size={40} /></div>}
 
         <SuperPagination
           page={page}

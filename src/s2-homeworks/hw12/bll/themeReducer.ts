@@ -5,8 +5,8 @@ type AppStateType = typeof initState
 export const themeReducer = (state: AppStateType = initState, action: ActionsType): AppStateType => { // fix any
   switch (action.type) {
     // дописать
-      case 'SET_THEME_ID':
-        return {...state, themeId: action.id}
+    case 'SET_THEME_ID':
+      return {...state, themeId: action.id}
 
     default:
       return state
